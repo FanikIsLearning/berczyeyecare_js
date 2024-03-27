@@ -1,11 +1,11 @@
-const reviewWrapper = document.querySelector(".reviewWrapper");
+const fanikWrapper = document.querySelector(".fanik-wrapper");
 const indicators = [...document.querySelectorAll(".indicators button")];
 let currentTestimonial = 0; // Default 0
 
 function moveToNextTestimonial() {
   const nextTestimonial = (currentTestimonial + 1) % indicators.length; // Loop back to the first at the end
   indicators[currentTestimonial].classList.remove("active");
-  reviewWrapper.style.marginLeft = `-${100 * nextTestimonial}%`;
+  fanikWrapper.style.marginLeft = `-${100 * nextTestimonial}%`;
   indicators[nextTestimonial].classList.add("active");
   currentTestimonial = nextTestimonial;
 }
@@ -13,7 +13,7 @@ function moveToNextTestimonial() {
 indicators.forEach((item, i) => {
   item.addEventListener("click", () => {
     indicators[currentTestimonial].classList.remove("active");
-    reviewWrapper.style.marginLeft = `-${100 * i}%`;
+    fanikWrapper.style.marginLeft = `-${100 * i}%`;
     item.classList.add("active");
     currentTestimonial = i;
     // Reset interval on manual click
@@ -35,7 +35,7 @@ changeTestimonial(nextTestimonial);
 
 function changeTestimonial(index) {
 indicators[currentTestimonial].classList.remove('active');
-reviewWrapper.style.marginLeft = `-${100 * index}%`;
+fanikWrapper.style.marginLeft = `-${100 * index}%`;
 indicators[index].classList.add('active');
 currentTestimonial = index;
 // Reset interval on arrow click
@@ -68,6 +68,6 @@ clearInterval(autoScroll);
 autoScroll = setInterval(moveToNextTestimonial, 3000);
 }
 
-document.querySelector(".reviewWrapper").addEventListener("touchstart", handleTouchStart, false);
-document.querySelector(".reviewWrapper").addEventListener("touchmove", handleTouchMove, false);
-document.querySelector(".reviewWrapper").addEventListener("touchend", handleTouchEnd, false);
+document.querySelector(".fanik-wrapper").addEventListener("touchstart", handleTouchStart, false);
+document.querySelector(".fanik-wrapper").addEventListener("touchmove", handleTouchMove, false);
+document.querySelector(".fanik-wrapper").addEventListener("touchend", handleTouchEnd, false);
